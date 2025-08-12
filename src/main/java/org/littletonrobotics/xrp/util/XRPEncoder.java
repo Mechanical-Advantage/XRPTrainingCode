@@ -1,4 +1,4 @@
-// Copyright (c) 2024 FRC 6328
+// Copyright (c) 2024-2025 FRC 6328
 // http://github.com/Mechanical-Advantage
 //
 // Use of this source code is governed by an MIT-style
@@ -11,7 +11,7 @@ import edu.wpi.first.math.filter.MedianFilter;
 import edu.wpi.first.util.CircularBuffer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Notifier;
-import org.littletonrobotics.junction.Logger;
+import edu.wpi.first.wpilibj.Timer;
 
 public class XRPEncoder extends Encoder {
   private static final double samplePeriod = 0.002;
@@ -37,7 +37,7 @@ public class XRPEncoder extends Encoder {
     fastNotifier =
         new Notifier(
             () -> {
-              double timestamp = Logger.getRealTimestamp() * 1.0e-6;
+              double timestamp = Timer.getFPGATimestamp();
               int count = get();
               if (count == 0) return; // Not connected yet
               fastBuffer.addFirst(new TimestampedCount(timestamp, count));

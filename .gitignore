@@ -176,4 +176,4 @@ networktables.json
 logs/
 
 # Version file
-src/main/java/frc/robot/BuildConstants.java
+src/main/java/org/littletonrobotics/xrp/BuildConstants.java
